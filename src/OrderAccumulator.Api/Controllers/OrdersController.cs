@@ -37,6 +37,9 @@ namespace OrderAccumulator.Api.Controllers
                     fixMessage,
                     cancellationToken);
 
+                //Apenas para facilitar o debug/testes
+                //var redableFixMessage = executionReport.Replace('\u0001', '|');
+
                 return Content(executionReport, "text/plain");
             }
             catch (Exception ex)
