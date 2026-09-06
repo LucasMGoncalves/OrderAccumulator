@@ -4,7 +4,7 @@ namespace OrderAccumulator.Domain.Entities
 {
     public class SymbolExposure
     {
-        public const decimal EXPOSURE_LIMIT = 100000000m;
+        public const decimal EXPOSURE_LIMIT = 100_000_000m;
 
         public string Symbol { get; }
         public decimal Value { get; private set; }
