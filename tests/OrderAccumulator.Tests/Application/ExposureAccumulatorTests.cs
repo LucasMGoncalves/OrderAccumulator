@@ -59,7 +59,7 @@ namespace OrderAccumulator.Tests.Application
             var orderOne = new Order(
                 "PETR4",
                 OrderSide.BUY,
-                100000,
+                100_000,
                 999.99m,
                 Guid.NewGuid().ToString("N"));
 
