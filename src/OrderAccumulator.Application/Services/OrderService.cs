@@ -2,7 +2,7 @@
 
 namespace OrderAccumulator.Application.Services
 {
-    public sealed class OrderService : IOrderService
+    public class OrderService : IOrderService
     {
         private readonly IFixOrderMessageService _fixOrderMessageService;
         private readonly IExposureAccumulator _exposureAccumulator;

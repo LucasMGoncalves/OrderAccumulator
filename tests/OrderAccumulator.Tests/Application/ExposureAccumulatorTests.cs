@@ -4,7 +4,7 @@ using OrderAccumulator.Domain.Enum;
 
 namespace OrderAccumulator.Tests.Application
 {
-    public sealed class ExposureAccumulatorTests
+    public class ExposureAccumulatorTests
     {
         #region [TryApplyExposureAsync]
 

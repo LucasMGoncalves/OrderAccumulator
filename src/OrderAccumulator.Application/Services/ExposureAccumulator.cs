@@ -7,12 +7,11 @@ namespace OrderAccumulator.Application.Services
     public class ExposureAccumulator : IExposureAccumulator
     {
         /*
-         * Armazena a exposição atual de cada símbolo em memória.
-         * O ConcurrentDictionary permite acessar/adicionar símbolos
-         * com segurança quando existem várias requisições simultâneas.
-         * E mantendo um objeto de sincronização para cada símbolo,
-         * para que as ordens do mesmo símbolo sejam processadas de forma sequencial,
-         * enquanto símbolos diferentes continuem sendo processados em paralelo.
+         * Armazena a exposição atual de cada símbolo em memória,
+         * utilizando o ConcurrentDictionary para acessar/manipular
+         * o dicionário de forma segura em caso de várias requisições simultâneas e
+         * mantendo um objeto de sincronização para cada símbolo, de forma que simbolos iguais
+         * sejam processadas sequencialmente e os diferentes sendo processados em paralelo.
          */
 
         private readonly ConcurrentDictionary<string, SymbolExposure> _exposures = new();

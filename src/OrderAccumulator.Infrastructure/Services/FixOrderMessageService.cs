@@ -8,7 +8,7 @@ using System.Globalization;
 
 namespace OrderAccumulator.Infrastructure.Services
 {
-    public sealed class FixOrderMessageService
+    public class FixOrderMessageService
     : IFixOrderMessageService
     {
         private readonly DataDictionary _dataDictionary;

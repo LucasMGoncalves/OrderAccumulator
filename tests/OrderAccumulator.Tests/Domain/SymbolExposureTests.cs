@@ -3,7 +3,7 @@ using OrderAccumulator.Domain.Enum;
 
 namespace OrderAccumulator.Tests.Domain
 {
-    public sealed class SymbolExposureTests
+    public class SymbolExposureTests
     {
         #region [HasLimit]
 
