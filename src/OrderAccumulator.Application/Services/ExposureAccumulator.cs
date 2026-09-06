@@ -2,9 +2,9 @@
 using OrderAccumulator.Domain.Entities;
 using System.Collections.Concurrent;
 
-namespace OrderAccumulator.Infrastructure.Services
+namespace OrderAccumulator.Application.Services
 {
-    public class ExposureAccumulator: IExposureAccumulator
+    public class ExposureAccumulator : IExposureAccumulator
     {
         /*
          * Armazena a exposição atual de cada símbolo em memória.

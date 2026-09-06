@@ -10,6 +10,9 @@ namespace OrderAccumulator.Application
         {
             services.AddScoped<IOrderService, OrderService>();
 
+            //Necessário ser singleton para manter o estado do acumulador de exposição durante a vida útil da aplicação
+            services.AddSingleton<IExposureAccumulator, ExposureAccumulator>();
+
             return services;
         }
     }
