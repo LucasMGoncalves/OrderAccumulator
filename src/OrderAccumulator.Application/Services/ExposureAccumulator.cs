@@ -19,6 +19,7 @@ namespace OrderAccumulator.Application.Services
 
         public Task<bool> TryApplyExposureAsync(Order order, CancellationToken cancellationToken)
         {
+            //Evita manter o processamento caso a requisição tenha sido cancelada
             cancellationToken.ThrowIfCancellationRequested();
 
             //Obtém ou cria o objeto de sincronização por símbolo
