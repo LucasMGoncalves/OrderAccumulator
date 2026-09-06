@@ -19,8 +19,7 @@ namespace OrderAccumulator.Application.Services
             string fixMessage,
             CancellationToken cancellationToken)
         {
-            var order =
-                _fixOrderMessageService.Parse(fixMessage);
+            var order = _fixOrderMessageService.Parse(fixMessage);
 
             var validationError = order.Validate();
 

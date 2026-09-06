@@ -1,7 +1,6 @@
 ﻿using OrderAccumulator.Application.Interfaces;
 using OrderAccumulator.Domain.Entities;
 using OrderAccumulator.Domain.Enum;
-using QuickFix;
 using QuickFix.DataDictionary;
 using QuickFix.Fields;
 using QuickFix.FIX44;
@@ -30,33 +29,40 @@ namespace OrderAccumulator.Infrastructure.Services
 
         public Order Parse(string fixMessage)
         {
-            if (string.IsNullOrWhiteSpace(fixMessage))
-                throw new ArgumentException("A mensagem FIX é obrigatória.", nameof(fixMessage));
+            try
+            {
+                if (string.IsNullOrWhiteSpace(fixMessage))
+                    throw new ArgumentException("A mensagem FIX é obrigatória.", nameof(fixMessage));
 
-            //Apenas para facilitar a leitura/testes.
-            //var normalizedMessage = fixMessage.Replace('|', QuickFix.Message.SOH);
+                //Apenas para facilitar a leitura/testes.
+                //var normalizedMessage = fixMessage.Replace('|', QuickFix.Message.SOH);
 
-            var message = new QuickFix.Message();
+                var message = new QuickFix.Message();
 
-            message.FromString(
-                fixMessage,
-                true,
-                _dataDictionary,
-                _dataDictionary,
-                null);
+                message.FromString(
+                    fixMessage,
+                    true,
+                    _dataDictionary,
+                    _dataDictionary,
+                    null);
 
-            var symbol = message.GetString(Tags.Symbol);
-            var side = ParseSide(message.GetString(Tags.Side));
-            var amount = decimal.Parse(message.GetString(Tags.OrderQty), CultureInfo.InvariantCulture);
-            var price = decimal.Parse(message.GetString(Tags.Price), CultureInfo.InvariantCulture);
-            var clientOrderId = message.GetString(Tags.ClOrdID);
+                var symbol = message.GetString(Tags.Symbol);
+                var side = ParseSide(message.GetString(Tags.Side));
+                var amount = decimal.Parse(message.GetString(Tags.OrderQty), CultureInfo.InvariantCulture);
+                var price = decimal.Parse(message.GetString(Tags.Price), CultureInfo.InvariantCulture);
+                var clientOrderId = message.GetString(Tags.ClOrdID);
 
-            return new Order(
-                symbol,
-                side,
-                amount,
-                price,
-                clientOrderId);
+                return new Order(
+                    symbol,
+                    side,
+                    amount,
+                    price,
+                    clientOrderId);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("Falha ao converter a mensagem FIX.", ex);
+            }
         }
 
         private static OrderSide ParseSide(string side)

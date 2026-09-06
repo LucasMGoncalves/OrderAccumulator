@@ -33,7 +33,7 @@ namespace OrderAccumulator.Domain.Entities
                 return "Quantidade deve ser maior que 0.";
 
             if (Price <= 0)
-                return "Preço deve ser maior que zero.";
+                return "Preço deve ser maior que 0.";
 
             return null;
         }

@@ -5,4 +5,7 @@
     <Project Path="src/OrderAccumulator.Domain/OrderAccumulator.Domain.csproj" />
     <Project Path="src/OrderAccumulator.Infrastructure/OrderAccumulator.Infrastructure.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/OrderAccumulator.Tests/OrderAccumulator.Tests.csproj" />
+  </Folder>
 </Solution>
